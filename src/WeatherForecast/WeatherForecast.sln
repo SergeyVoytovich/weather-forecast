@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Interfaces", "Common\Common.Interfaces\Common.Interfaces.csproj", "{209F4405-1F58-4A9F-9C63-4BBA7A5693B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Data.OpenWeathermap", "Data\WeatherForecast.Data.OpenWeathermap\WeatherForecast.Data.OpenWeathermap.csproj", "{DC4B361E-D08E-4062-BF69-5E53F3085524}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,11 +19,16 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{209F4405-1F58-4A9F-9C63-4BBA7A5693B1} = {433F82A9-D731-4AF4-A34C-8787A0D24FB5}
+		{DC4B361E-D08E-4062-BF69-5E53F3085524} = {FAFD20CE-4A2D-4337-A071-B2A03C6838F8}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{209F4405-1F58-4A9F-9C63-4BBA7A5693B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{209F4405-1F58-4A9F-9C63-4BBA7A5693B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{209F4405-1F58-4A9F-9C63-4BBA7A5693B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{209F4405-1F58-4A9F-9C63-4BBA7A5693B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC4B361E-D08E-4062-BF69-5E53F3085524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC4B361E-D08E-4062-BF69-5E53F3085524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC4B361E-D08E-4062-BF69-5E53F3085524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC4B361E-D08E-4062-BF69-5E53F3085524}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
