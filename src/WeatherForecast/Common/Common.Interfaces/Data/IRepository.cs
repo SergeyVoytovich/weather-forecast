@@ -1,4 +1,5 @@
-﻿using Common.Interfaces.Models;
+﻿using System.Threading.Tasks;
+using Common.Interfaces.Models;
 
 namespace Common.Interfaces.Data
 {
@@ -12,12 +13,12 @@ namespace Common.Interfaces.Data
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        ICity Get(string name);
+        Task<ICity> GetAsync(string name);
         /// <summary>
         /// Get city weather by city yip code
         /// </summary>
         /// <param name="zipCode"></param>
         /// <returns></returns>
-        ICity Get(int zipCode);
+        Task<ICity> GetAsync(int zipCode);
     }
 }

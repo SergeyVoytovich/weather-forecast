@@ -1,4 +1,5 @@
-﻿using Common.Interfaces.Models;
+﻿using System.Threading.Tasks;
+using Common.Interfaces.Models;
 
 namespace Common.Interfaces.ApplicationLayer
 {
@@ -12,6 +13,6 @@ namespace Common.Interfaces.ApplicationLayer
         /// </summary>
         /// <param name="query">Query for search (city name or city zipcode)</param>
         /// <returns></returns>
-        ICity Get(string query);
+        Task<ICity> GetAsync(string query);
     }
 }
