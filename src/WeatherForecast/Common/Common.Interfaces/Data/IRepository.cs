@@ -13,12 +13,20 @@ namespace Common.Interfaces.Data
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        Task<ICity> GetAsync(string name);
+        Task<ICity> GetWeatherAsync(string name);
+
         /// <summary>
         /// Get city weather by city yip code
         /// </summary>
         /// <param name="zipCode"></param>
         /// <returns></returns>
-        Task<ICity> GetAsync(int zipCode);
+        Task<ICity> GetWeatherAsync(int zipCode);
+
+        /// <summary>
+        /// Load forecast for current city
+        /// </summary>
+        /// <param name="city"></param>
+        /// <returns></returns>
+        Task LoadForecast(ICity city);
     }
 }
