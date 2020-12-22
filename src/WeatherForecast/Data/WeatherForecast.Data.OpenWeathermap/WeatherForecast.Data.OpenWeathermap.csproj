@@ -2,6 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <AssemblyName>WeatherForecast.Data.OpenWeather</AssemblyName>
+        <RootNamespace>WeatherForecast.Data.OpenWeather</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

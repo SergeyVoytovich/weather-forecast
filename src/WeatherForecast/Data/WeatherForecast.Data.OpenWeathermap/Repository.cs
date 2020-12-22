@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Common.Interfaces.Data;
 using Common.Interfaces.Models;
 
-namespace WeatherForecast.Data.OpenWeathermap
+namespace WeatherForecast.Data.OpenWeather
 {
     /// <summary>
     /// Open weather map repository
@@ -14,7 +14,7 @@ namespace WeatherForecast.Data.OpenWeathermap
         #region Private members
 
         private readonly HttpClient _client;
-        private readonly IOpenWeathermapConfig _config;
+        private readonly IOpenWeatherConfig _config;
 
         #endregion
         
@@ -26,7 +26,7 @@ namespace WeatherForecast.Data.OpenWeathermap
         /// </summary>
         /// <param name="client">Http client</param>
         /// <param name="config">Configuration</param>
-        public Repository(HttpClient client, IOpenWeathermapConfig config)
+        public Repository(HttpClient client, IOpenWeatherConfig config)
         {
             _client = client ?? throw new ArgumentNullException(nameof(client));
             _config = config ?? throw new ArgumentNullException(nameof(config));

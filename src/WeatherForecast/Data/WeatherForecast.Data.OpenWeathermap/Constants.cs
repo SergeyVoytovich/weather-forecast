@@ -1,4 +1,4 @@
-﻿namespace WeatherForecast.Data.OpenWeathermap
+﻿namespace WeatherForecast.Data.OpenWeather
 {
     internal static class Constants
     {

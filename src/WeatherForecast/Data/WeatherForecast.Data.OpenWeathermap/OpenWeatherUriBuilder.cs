@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
-namespace WeatherForecast.Data.OpenWeathermap
+namespace WeatherForecast.Data.OpenWeather
 {
-    public class WeathermapUriBuilder : UriBuilder
+    public class OpenWeatherUriBuilder : UriBuilder
     {
-        public WeathermapUriBuilder(string apiKey)
+        public OpenWeatherUriBuilder(string apiKey)
         {
             Host = Constants.Host;
             Path = Constants.Path;
@@ -24,31 +23,31 @@ namespace WeatherForecast.Data.OpenWeathermap
             Path = System.IO.Path.Combine(Path, path);
         }
         
-        public WeathermapUriBuilder Weather()
+        public OpenWeatherUriBuilder Weather()
         {
             AddPath(Constants.Weather);
             return this;
         }
 
-        public WeathermapUriBuilder Forecast()
+        public OpenWeatherUriBuilder Forecast()
         {
             AddPath(Constants.Forecast);
             return this;
         }
 
-        public WeathermapUriBuilder CityName(string name)
+        public OpenWeatherUriBuilder CityName(string name)
         {
             AddQuery(Constants.CityNameKey, name);
             return this;
         }
 
-        public WeathermapUriBuilder ZipCode(int zip)
+        public OpenWeatherUriBuilder ZipCode(int zip)
         {
             AddQuery(Constants.ZipCodeKey, $"{zip},{Constants.CountryCode}");
             return this;
         }
 
-        public WeathermapUriBuilder Id(int id)
+        public OpenWeatherUriBuilder Id(int id)
         {
             AddQuery(Constants.IdKey, id.ToString());
             return this;
