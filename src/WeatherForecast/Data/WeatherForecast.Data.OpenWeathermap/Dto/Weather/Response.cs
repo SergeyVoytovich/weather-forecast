@@ -1,22 +1,23 @@
 ﻿using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace WeatherForecast.Data.OpenWeather.Dto.Weather
 {
     public class Response
     {
-        [JsonPropertyName("code")]
-        public string Code { get; set; }
+        [JsonProperty("cod")]
+        public int Code { get; set; }
         
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public int CityId { get; set; }
         
-        [JsonPropertyName("name")]
+        [JsonProperty("name")]
         public string CityName { get; set; }
         
-        [JsonPropertyName("main")]
+        [JsonProperty("main")]
         public Weather Weather { get; set; }
         
-        [JsonPropertyName("wind")]
+        [JsonProperty("wind")]
         public Wind Wind { get; set; }
     }
 }

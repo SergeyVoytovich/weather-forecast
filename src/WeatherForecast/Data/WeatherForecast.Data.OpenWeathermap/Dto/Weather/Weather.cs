@@ -1,16 +1,17 @@
 ﻿using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace WeatherForecast.Data.OpenWeather.Dto.Weather
 {
     public class Weather
     {
-        [JsonPropertyName("temp")]
+        [JsonProperty("temp")]
         public decimal Temperature { get; set; }
         
-        [JsonPropertyName("pressure")]
+        [JsonProperty("pressure")]
         public decimal Pressure { get; set; }
         
-        [JsonPropertyName("humidity")]
+        [JsonProperty("humidity")]
         public decimal Humidity { get; set; }
     }
 }
