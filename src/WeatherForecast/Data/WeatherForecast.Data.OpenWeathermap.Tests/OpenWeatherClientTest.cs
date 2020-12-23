@@ -17,10 +17,10 @@ namespace WeatherForecast.Data.OpenWeather.Tests
             Assert.AreEqual(200, response.Code);
             Assert.AreEqual("Berlin", response.CityName);
             Assert.AreEqual(2950159, response.CityId);
-            Assert.IsNotNull(response.Weather);
-            Assert.Greater(response.Weather.Temperature, 0);
-            Assert.Greater(response.Weather.Pressure, 0);
-            Assert.Greater(response.Weather.Humidity, 0);
+            Assert.IsNotNull(response.Main);
+            Assert.Greater(response.Main.Temperature, 0);
+            Assert.Greater(response.Main.Pressure, 0);
+            Assert.Greater(response.Main.Humidity, 0);
             Assert.IsNotNull(response.Wind);
             Assert.Greater(response.Wind.Speed, 0);
         }
@@ -33,11 +33,11 @@ namespace WeatherForecast.Data.OpenWeather.Tests
             Assert.IsNotNull(response);
             Assert.AreEqual(200, response.Code);
             Assert.AreEqual("Berlin", response.CityName);
-            // Assert.AreEqual(2950159, response.CityId); // id in zip code responses is 0
-            Assert.IsNotNull(response.Weather);
-            Assert.Greater(response.Weather.Temperature, 0);
-            Assert.Greater(response.Weather.Pressure, 0);
-            Assert.Greater(response.Weather.Humidity, 0);
+            // Assert.AreEqual(2950159, response.CityId); // id in zip code responses is 0!!
+            Assert.IsNotNull(response.Main);
+            Assert.Greater(response.Main.Temperature, 0);
+            Assert.Greater(response.Main.Pressure, 0);
+            Assert.Greater(response.Main.Humidity, 0);
             Assert.IsNotNull(response.Wind);
             Assert.Greater(response.Wind.Speed, 0);
         }

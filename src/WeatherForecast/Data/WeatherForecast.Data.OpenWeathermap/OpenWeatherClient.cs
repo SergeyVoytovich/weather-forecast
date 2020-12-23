@@ -32,18 +32,20 @@ namespace WeatherForecast.Data.OpenWeather
             return responseBody;
         }
         
-        public async Task<Response> GetCurrentWeatherByCityName(string name)
+        public async Task<WeatherResponse> GetCurrentWeatherByCityName(string name)
         {
             var body = await Run(UriBuilder().Weather().CityName(name).ToString());
-            var response = JsonConvert.DeserializeObject<Response>(body);
+            var response = JsonConvert.DeserializeObject<WeatherResponse>(body);
             return response;
         }
         
-        public async Task<Response> GetCurrentWeatherByZipCode(int code)
+        public async Task<WeatherResponse> GetCurrentWeatherByZipCode(int code)
         {
             var body = await Run(UriBuilder().Weather().ZipCode(code).ToString());
-            var response = JsonConvert.DeserializeObject<Response>(body);
+            var response = JsonConvert.DeserializeObject<WeatherResponse>(body);
             return response;
         }
+        
+        
     }
 }
