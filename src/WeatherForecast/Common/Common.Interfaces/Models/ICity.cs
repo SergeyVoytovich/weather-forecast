@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Common.Interfaces.Models
+namespace WeatherForecast.Common.Models
 {
     /// <summary>
     /// Model to store data of city

@@ -2,7 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-        <AssemblyName>WeatherForecast.Common</AssemblyName>
+        <AssemblyName>WeatherForecast.Common.Interfaces</AssemblyName>
+        <RootNamespace>WeatherForecast.Common</RootNamespace>
     </PropertyGroup>
 
 </Project>

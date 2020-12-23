@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace WeatherForecast.Data.OpenWeather.Dto.Forecast
 {
-    public class ForecastResponse
+    public class ForecastResponse : ResponseBase
     {
         [JsonProperty("city")]
         public City City { get; set; }

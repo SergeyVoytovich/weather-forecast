@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Common.Interfaces.Models;
+using WeatherForecast.Common.Models;
 
-namespace Common.Interfaces.Data
+namespace WeatherForecast.Common.Data
 {
     /// <summary>
     /// Interface for repository 

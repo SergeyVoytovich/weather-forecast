@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using WeatherForecast.Data.OpenWeather.Dto.Forecast;
 using WeatherForecast.Data.OpenWeather.Dto.Weather;
 
 namespace WeatherForecast.Data.OpenWeather
@@ -46,6 +47,18 @@ namespace WeatherForecast.Data.OpenWeather
             return response;
         }
         
+        public async Task<ForecastResponse> GetForecastWeatherByCityName(string name)
+        {
+            var body = await Run(UriBuilder().Forecast().CityName(name).ToString());
+            var response = JsonConvert.DeserializeObject<ForecastResponse>(body);
+            return response;
+        }
         
+        public async Task<ForecastResponse> GetForecastWeatherByCityId(int id)
+        {
+            var body = await Run(UriBuilder().Forecast().Id(id).ToString());
+            var response = JsonConvert.DeserializeObject<ForecastResponse>(body);
+            return response;
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Common.Interfaces.Models;
+using WeatherForecast.Common.Models;
 
-namespace Common.Interfaces.ApplicationLayer
+namespace WeatherForecast.Common.ApplicationLayer
 {
     /// <summary>
     /// Interface for application

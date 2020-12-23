@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Common.Interfaces.Models
+namespace WeatherForecast.Common.Models
 {
     /// <summary>
     /// Model to store weather data
