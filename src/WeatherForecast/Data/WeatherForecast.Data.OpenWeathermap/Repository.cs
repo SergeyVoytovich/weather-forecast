@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using NUnit.Framework;
 using WeatherForecast.Common.Data;
 using WeatherForecast.Common.Models;
+using WeatherForecast.Data.OpenWeather.Dto.Weather;
 
 namespace WeatherForecast.Data.OpenWeather
 {
@@ -41,19 +43,8 @@ namespace WeatherForecast.Data.OpenWeather
 
         #region Methods
 
-        public async Task<ICity> GetWeatherAsync(string name)
+        private ICity ConvertWeatherResponse(WeatherResponse dto)
         {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                return null;
-            }
-
-            var dto = await _client.GetCurrentWeatherByCityName(name);
-            if (dto is null)
-            {
-                return null;
-            }
-
             var result = new City
             {
                 Id = dto.CityId,
@@ -72,10 +63,34 @@ namespace WeatherForecast.Data.OpenWeather
             };
             return result;
         }
-
-        public Task<ICity> GetWeatherAsync(int zipCode)
+        
+        public async Task<ICity> GetWeatherAsync(string name)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return null;
+            }
+
+            var dto = await _client.GetCurrentWeatherByCityName(name);
+            if (dto is null)
+            {
+                return null;
+            }
+
+            var result = ConvertWeatherResponse(dto);
+            return result;
+        }
+
+        public async Task<ICity> GetWeatherAsync(int zipCode)
+        {
+            var dto = await _client.GetCurrentWeatherByZipCode(zipCode);
+            if (dto is null)
+            {
+                return null;
+            }
+
+            var result = ConvertWeatherResponse(dto);
+            return result;
         }
 
         public Task LoadForecast(ICity city)
