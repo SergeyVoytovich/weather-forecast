@@ -10,11 +10,11 @@ namespace WeatherForecast.Common.Models
         /// <summary>
         /// Date time of weather data
         /// </summary>
-        DateTime DateTime { get; set; }
+        DateTime Date { get; set; }
         /// <summary>
         /// Is current weather
         /// </summary>
-        bool IsCurrent => DateTime.Date == DateTime.Now.Date;
+        bool IsCurrent => Date.Date == DateTime.Now.Date;
         /// <summary>
         /// Temperature
         /// </summary>
@@ -27,5 +27,7 @@ namespace WeatherForecast.Common.Models
         /// WindSpeed
         /// </summary>
         decimal WindSpeed { get; set; }
+        
+        decimal Pressure { get; set; }
     }
 }

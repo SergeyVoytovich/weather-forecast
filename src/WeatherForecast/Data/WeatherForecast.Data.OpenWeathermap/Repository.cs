@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Common.Interfaces.Data;
-using Common.Interfaces.Models;
+using WeatherForecast.Common.Data;
+using WeatherForecast.Common.Models;
 
 namespace WeatherForecast.Data.OpenWeather
 {
@@ -13,12 +14,11 @@ namespace WeatherForecast.Data.OpenWeather
     {
         #region Private members
 
-        private readonly HttpClient _client;
-        private readonly IOpenWeatherConfig _config;
+        private readonly OpenWeatherClient _client;
 
         #endregion
-        
-        
+
+
         #region Constructors
 
         /// <summary>
@@ -28,18 +28,49 @@ namespace WeatherForecast.Data.OpenWeather
         /// <param name="config">Configuration</param>
         public Repository(HttpClient client, IOpenWeatherConfig config)
         {
-            _client = client ?? throw new ArgumentNullException(nameof(client));
-            _config = config ?? throw new ArgumentNullException(nameof(config));
+            if (config == null)
+            {
+                throw new ArgumentNullException(nameof(config));
+            }
+
+            _client = new OpenWeatherClient(client, config.ApiKey);
         }
 
         #endregion
-        
-        
+
+
         #region Methods
 
-        public Task<ICity> GetWeatherAsync(string name)
+        public async Task<ICity> GetWeatherAsync(string name)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return null;
+            }
+
+            var dto = await _client.GetCurrentWeatherByCityName(name);
+            if (dto is null)
+            {
+                return null;
+            }
+
+            var result = new City
+            {
+                Id = dto.CityId,
+                Name = dto.CityName,
+                Weather = new List<IWeather>
+                {
+                    new Weather
+                    {
+                        Date = DateTime.Now,
+                        Temperature = dto.Main?.Temperature ?? 0,
+                        Humidity = dto.Main?.Humidity ?? 0,
+                        WindSpeed = dto.Wind?.Speed ?? 0,
+                        Pressure = dto.Main?.Pressure ?? 0
+                    }
+                }
+            };
+            return result;
         }
 
         public Task<ICity> GetWeatherAsync(int zipCode)
@@ -51,9 +82,7 @@ namespace WeatherForecast.Data.OpenWeather
         {
             throw new NotImplementedException();
         }
-        
-        #endregion
 
-        
+        #endregion
     }
 }
