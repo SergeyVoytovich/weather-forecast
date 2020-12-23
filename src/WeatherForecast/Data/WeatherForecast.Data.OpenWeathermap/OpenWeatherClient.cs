@@ -38,5 +38,12 @@ namespace WeatherForecast.Data.OpenWeather
             var response = JsonConvert.DeserializeObject<Response>(body);
             return response;
         }
+        
+        public async Task<Response> GetCurrentWeatherByZipCode(int code)
+        {
+            var body = await Run(UriBuilder().Weather().ZipCode(code).ToString());
+            var response = JsonConvert.DeserializeObject<Response>(body);
+            return response;
+        }
     }
 }
