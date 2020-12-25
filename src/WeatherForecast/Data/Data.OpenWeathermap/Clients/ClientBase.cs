@@ -23,7 +23,7 @@ namespace WeatherForecast.Data.OpenWeather.Clients
         }
 
         protected virtual OpenWeatherUriBuilder UriBuilder() 
-            => new OpenWeatherUriBuilder(_apiKey);
+            => new OpenWeatherUriBuilder(_apiKey).MetricUnits();
 
         protected async Task<T> Run(UriBuilder builder)
         {

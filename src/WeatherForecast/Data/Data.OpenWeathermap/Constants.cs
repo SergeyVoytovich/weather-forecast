@@ -14,5 +14,6 @@
         public const string Weather = "weather";
         public const string Forecast = "forecast";
         public const string IdKey = "id";
+        public const string Metric = "metric";
     }
 }

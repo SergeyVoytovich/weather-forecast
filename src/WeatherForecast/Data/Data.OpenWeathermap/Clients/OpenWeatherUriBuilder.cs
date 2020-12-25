@@ -52,5 +52,14 @@ namespace WeatherForecast.Data.OpenWeather.Clients
             AddQuery(Constants.IdKey, id.ToString());
             return this;
         }
+
+        public OpenWeatherUriBuilder Units(string units)
+        {
+            AddQuery(Constants.UnitsKey, units);
+            return this;
+        }
+
+        public OpenWeatherUriBuilder MetricUnits()
+            => Units(Constants.Metric);
     }
 }
