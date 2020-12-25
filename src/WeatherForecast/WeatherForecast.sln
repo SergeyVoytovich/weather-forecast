@@ -10,9 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Interfaces", "Common\Common.Interfaces\Common.Interfaces.csproj", "{209F4405-1F58-4A9F-9C63-4BBA7A5693B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Data.OpenWeathermap", "Data\WeatherForecast.Data.OpenWeathermap\WeatherForecast.Data.OpenWeathermap.csproj", "{DC4B361E-D08E-4062-BF69-5E53F3085524}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.OpenWeathermap", "Data\Data.OpenWeathermap\Data.OpenWeathermap.csproj", "{DC4B361E-D08E-4062-BF69-5E53F3085524}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Data.OpenWeathermap.Tests", "Data\WeatherForecast.Data.OpenWeathermap.Tests\WeatherForecast.Data.OpenWeathermap.Tests.csproj", "{F0D1F4DC-AA9D-4208-BD46-062E78644088}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.OpenWeathermap.Tests", "Data\Data.OpenWeathermap.Tests\Data.OpenWeathermap.Tests.csproj", "{F0D1F4DC-AA9D-4208-BD46-062E78644088}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Models", "Common\Common.Models\Common.Models.csproj", "{32938F71-ACCF-472B-AB4A-E660CB65345D}"
 EndProject

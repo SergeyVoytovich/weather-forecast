@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\WeatherForecast.Data.OpenWeathermap\WeatherForecast.Data.OpenWeathermap.csproj" />
+      <ProjectReference Include="..\Data.OpenWeathermap\Data.OpenWeathermap.csproj" />
     </ItemGroup>
 
 </Project>

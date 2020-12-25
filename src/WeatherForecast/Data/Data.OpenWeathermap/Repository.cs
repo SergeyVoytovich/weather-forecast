@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using WeatherForecast.Common.Data;
 using WeatherForecast.Common.Models;
+using WeatherForecast.Data.OpenWeather.Clients;
 using WeatherForecast.Data.OpenWeather.Dto.Forecast;
 using WeatherForecast.Data.OpenWeather.Dto.Weather;
 using City = WeatherForecast.Common.Models.City;
@@ -19,7 +20,8 @@ namespace WeatherForecast.Data.OpenWeather
     {
         #region Private members
 
-        private readonly OpenWeatherClient _client;
+        private readonly IWeatherClient _weather;
+        private readonly IForecastClient _forecast;
 
         #endregion
 
@@ -38,7 +40,8 @@ namespace WeatherForecast.Data.OpenWeather
                 throw new ArgumentNullException(nameof(config));
             }
 
-            _client = new OpenWeatherClient(client, config.ApiKey);
+            _weather = new WeatherClient(client, config.ApiKey);
+            _forecast = new ForecastClient(client, config.ApiKey);
         }
 
         #endregion
@@ -74,7 +77,7 @@ namespace WeatherForecast.Data.OpenWeather
                 return null;
             }
 
-            var dto = await _client.GetCurrentWeatherByCityName(name);
+            var dto = await _weather.GetByCityName(name);
             if (dto is null)
             {
                 return null;
@@ -86,7 +89,7 @@ namespace WeatherForecast.Data.OpenWeather
 
         public async Task<ICity> GetWeatherAsync(int zipCode)
         {
-            var dto = await _client.GetCurrentWeatherByZipCode(zipCode);
+            var dto = await _weather.GetByZipCode(zipCode);
             if (dto is null)
             {
                 return null;
@@ -106,11 +109,11 @@ namespace WeatherForecast.Data.OpenWeather
             ForecastResponse dto;
             if (city.Id > 0)
             {
-                dto = await _client.GetForecastWeatherByCityId(city.Id);
+                dto = await _forecast.GetById(city.Id);
             }
             else if(!string.IsNullOrWhiteSpace(city.Name))
             {
-                dto = await _client.GetForecastWeatherByCityName(city.Name);
+                dto = await _forecast.GetByCityName(city.Name);
             }
             else
             {
