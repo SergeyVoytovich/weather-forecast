@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
+using Presentation.Api.Models;
 using WeatherForecast.Common.ApplicationLayer;
 
 namespace Presentation.Api.Controllers
@@ -12,9 +14,23 @@ namespace Presentation.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<int> Get()
+        public ActionResult<CityModel> Get()
         {
-            return 200;
+            return new CityModel
+            {
+                Name = "balblabla",
+                Weather =
+                {
+                    new WeatherModel
+                    {
+                        Date = DateTime.Now,
+                        Humidity = 6519814,
+                        Pressure = 45498,
+                        Temperature = 484984,
+                        WindSpeed = 15451
+                    }
+                }
+            };
         }
     }
 }
