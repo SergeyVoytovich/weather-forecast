@@ -1,10 +1,9 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using WeatherForecast.Data.OpenWeather.Clients;
 
-namespace WeatherForecast.Data.OpenWeather.Tests
+namespace WeatherForecast.Data.OpenWeather.Tests.Clients
 {
     public class WeatherClientTests
     {
@@ -15,7 +14,7 @@ namespace WeatherForecast.Data.OpenWeather.Tests
         public async Task GetCurrentWeatherByCityName()
         {
             var client = InitClient();
-            var response = await client.GetByCityName("Berlin");
+            var response = await client.GetByCityNameAsync("Berlin");
             Assert.IsNotNull(response);
             Assert.AreEqual(200, response.Code);
             Assert.AreEqual("Berlin", response.CityName);
@@ -32,7 +31,7 @@ namespace WeatherForecast.Data.OpenWeather.Tests
         public async Task GetCurrentWeatherByZipCode()
         {
             var client = InitClient();
-            var response = await client.GetByZipCode(10117); // Berlin zip code
+            var response = await client.GetByZipCodeAsync(10117); // Berlin zip code
             Assert.IsNotNull(response);
             Assert.AreEqual(200, response.Code);
             Assert.AreEqual("Berlin", response.CityName);

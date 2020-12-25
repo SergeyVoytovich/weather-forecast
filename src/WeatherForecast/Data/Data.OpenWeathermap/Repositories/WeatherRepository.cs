@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using WeatherForecast.Common.Data;
 using WeatherForecast.Common.Models;
 using WeatherForecast.Data.OpenWeather.Clients;
-using WeatherForecast.Data.OpenWeather.Dto.Forecast;
 using WeatherForecast.Data.OpenWeather.Dto.Weather;
 using City = WeatherForecast.Common.Models.City;
 
@@ -68,14 +65,14 @@ namespace WeatherForecast.Data.OpenWeather.Repositories
         
         public async Task<ICity> GetAsync(string name)
         {
-            var dto = await _client.GetByCityName(name);
+            var dto = await _client.GetByCityNameAsync(name);
             var result = ConvertWeatherResponse(dto);
             return result;
         }
 
         public async Task<ICity> GetAsync(int zipCode)
         {
-            var dto = await _client.GetByZipCode(zipCode);
+            var dto = await _client.GetByZipCodeAsync(zipCode);
             var result = ConvertWeatherResponse(dto);
             return result;
         }

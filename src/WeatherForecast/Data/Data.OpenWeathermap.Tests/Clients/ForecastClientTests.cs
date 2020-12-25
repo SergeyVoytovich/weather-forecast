@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.VisualBasic;
 using NUnit.Framework;
 using WeatherForecast.Data.OpenWeather.Clients;
 
-namespace WeatherForecast.Data.OpenWeather.Tests
+namespace WeatherForecast.Data.OpenWeather.Tests.Clients
 {
     public class ForecastClientTests
     {
@@ -16,7 +15,7 @@ namespace WeatherForecast.Data.OpenWeather.Tests
         public async Task GetForecastWeatherByCityName()
         {
             var client = InitClient();
-            var response = await client.GetByCityName("Berlin");
+            var response = await client.GetByCityNameAsync("Berlin");
             Assert.IsNotNull(response);
             Assert.AreEqual(200, response.Code);
             
@@ -43,10 +42,18 @@ namespace WeatherForecast.Data.OpenWeather.Tests
         }
         
         [Test]
+        public async Task GetForecastWeatherByCityName_ExpectedNull()
+        {
+            var client = InitClient();
+            var response = await client.GetByCityNameAsync("Berl132in");
+            Assert.IsNull(response);
+        }
+        
+        [Test]
         public async Task GetForecastWeatherByCityId()
         {
             var client = InitClient();
-            var response = await client.GetById(2950159);
+            var response = await client.GetByIdAsync(2950159);
             Assert.IsNotNull(response);
             Assert.AreEqual(200, response.Code);
             
@@ -70,6 +77,14 @@ namespace WeatherForecast.Data.OpenWeather.Tests
                 Assert.IsNotNull(item.Wind);
                 Assert.Greater(item.Wind.Speed, 0);
             }
+        }
+        
+        [Test]
+        public async Task GetForecastWeatherByCityId_ExpectedNull()
+        {
+            var client = InitClient();
+            var response = await client.GetByIdAsync(1154);
+            Assert.IsNull(response);
         }
     }
 }

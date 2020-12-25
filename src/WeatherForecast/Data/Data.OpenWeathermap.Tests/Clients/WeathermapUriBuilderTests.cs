@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using WeatherForecast.Data.OpenWeather.Clients;
 
-namespace WeatherForecast.Data.OpenWeather.Tests
+namespace WeatherForecast.Data.OpenWeather.Tests.Clients
 {
     public class WeathermapUriBuilderTests
     {

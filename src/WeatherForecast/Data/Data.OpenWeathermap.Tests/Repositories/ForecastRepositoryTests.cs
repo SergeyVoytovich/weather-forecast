@@ -8,14 +8,12 @@ using WeatherForecast.Common.Models;
 using WeatherForecast.Data.OpenWeather.Clients;
 using WeatherForecast.Data.OpenWeather.Repositories;
 
-namespace WeatherForecast.Data.OpenWeather.Tests
+namespace WeatherForecast.Data.OpenWeather.Tests.Repositories
 {
     public class ForecastRepositoryTests
     {
         private IForecastRepository InitRepository() => new ForecastRepository(new ForecastClient(new HttpClient(), Constants.ApiKey));
 
-        
-        
         [Test]
         public async Task LoadForecast()
         {
@@ -43,7 +41,6 @@ namespace WeatherForecast.Data.OpenWeather.Tests
                 await repository.LoadAsync(city);
                 AssertIsLoaded(city);
             }
-           
         }
     }
 }

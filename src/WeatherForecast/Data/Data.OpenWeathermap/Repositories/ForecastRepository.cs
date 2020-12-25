@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using WeatherForecast.Common.Data;
 using WeatherForecast.Common.Models;
@@ -48,11 +47,11 @@ namespace WeatherForecast.Data.OpenWeather.Repositories
             ForecastResponse dto;
             if (city.Id > 0)
             {
-                dto = await _client.GetById(city.Id);
+                dto = await _client.GetByIdAsync(city.Id);
             }
             else if(!string.IsNullOrWhiteSpace(city.Name))
             {
-                dto = await _client.GetByCityName(city.Name);
+                dto = await _client.GetByCityNameAsync(city.Name);
             }
             else
             {

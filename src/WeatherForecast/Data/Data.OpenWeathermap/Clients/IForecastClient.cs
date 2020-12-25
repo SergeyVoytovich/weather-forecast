@@ -5,7 +5,7 @@ namespace WeatherForecast.Data.OpenWeather.Clients
 {
     public interface IForecastClient
     {
-        Task<ForecastResponse> GetByCityName(string name);
-        Task<ForecastResponse> GetById(int id);
+        Task<ForecastResponse> GetByCityNameAsync(string name);
+        Task<ForecastResponse> GetByIdAsync(int id);
     }
 }

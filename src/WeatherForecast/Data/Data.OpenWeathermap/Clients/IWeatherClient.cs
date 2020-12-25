@@ -5,7 +5,7 @@ namespace WeatherForecast.Data.OpenWeather.Clients
 {
     public interface IWeatherClient
     {
-        Task<WeatherResponse> GetByCityName(string name);
-        Task<WeatherResponse> GetByZipCode(int code);
+        Task<WeatherResponse> GetByCityNameAsync(string name);
+        Task<WeatherResponse> GetByZipCodeAsync(int code);
     }
 }

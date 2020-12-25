@@ -3,8 +3,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using WeatherForecast.Data.OpenWeather.Dto;
-using WeatherForecast.Data.OpenWeather.Dto.Forecast;
-using WeatherForecast.Data.OpenWeather.Dto.Weather;
 
 namespace WeatherForecast.Data.OpenWeather.Clients
 {
@@ -31,10 +29,16 @@ namespace WeatherForecast.Data.OpenWeather.Clients
         {
             var uri = (builder ?? UriBuilder()).ToString();
             var response = await _client.GetAsync(uri);
-            response.EnsureSuccessStatusCode();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+            
             var responseBody = await response.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<T>(responseBody);
             return result;
+
         }
     }
 }

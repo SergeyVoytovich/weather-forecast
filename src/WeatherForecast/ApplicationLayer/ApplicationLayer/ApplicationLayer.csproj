@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <AssemblyName>WeatherForecast.ApplicationLayer</AssemblyName>
+        <RootNamespace>WeatherForecast.ApplicationLayer</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Common\Common.Interfaces\Common.Interfaces.csproj" />
+    </ItemGroup>
+
+</Project>

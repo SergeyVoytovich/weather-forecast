@@ -13,10 +13,10 @@ namespace WeatherForecast.Data.OpenWeather.Clients
         protected override OpenWeatherUriBuilder UriBuilder() 
             => base.UriBuilder().Weather();
 
-        public async Task<WeatherResponse> GetByCityName(string name) 
+        public async Task<WeatherResponse> GetByCityNameAsync(string name) 
             => await Run(UriBuilder().CityName(name));
 
-        public async Task<WeatherResponse> GetByZipCode(int code)
+        public async Task<WeatherResponse> GetByZipCodeAsync(int code)
             => await Run(UriBuilder().ZipCode(code));
     }
 }
