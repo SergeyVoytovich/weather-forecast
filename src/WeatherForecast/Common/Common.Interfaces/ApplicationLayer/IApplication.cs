@@ -9,7 +9,7 @@ namespace WeatherForecast.Common.ApplicationLayer
     public interface IApplication
     {
         /// <summary>
-        /// Get city weather
+        /// Get city weather and forecast
         /// </summary>
         /// <param name="query">Query for search (city name or city zipcode)</param>
         /// <returns></returns>
