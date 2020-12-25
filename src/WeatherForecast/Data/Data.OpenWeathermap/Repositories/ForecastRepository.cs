@@ -64,7 +64,7 @@ namespace WeatherForecast.Data.OpenWeather.Repositories
             }
             
             city.Weather ??= new List<IWeather>();
-            foreach (var item in dto.Items.GroupBy(i => i.Date))
+            foreach (var item in dto.Items.GroupBy(i => i.Date.Date))
             {
                 city.Weather.Add(new Weather
                 {
