@@ -8,10 +8,8 @@ namespace WeatherForecast.Data.OpenWeather.Tests
 {
     public class WeatherClientTests
     {
-        private const string ApiKey = "fcadd28326c90c3262054e0e6ca599cd";
-
         private IWeatherClient InitClient()
-            => new WeatherClient(new HttpClient(), ApiKey);
+            => new WeatherClient(new HttpClient(), Constants.ApiKey);
         
         [Test]
         public async Task GetCurrentWeatherByCityName()

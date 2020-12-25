@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 using NUnit.Framework;
 using WeatherForecast.Data.OpenWeather.Clients;
 
@@ -8,10 +9,8 @@ namespace WeatherForecast.Data.OpenWeather.Tests
 {
     public class ForecastClientTests
     {
-        private const string ApiKey = "fcadd28326c90c3262054e0e6ca599cd";
-
         private IForecastClient InitClient()
-            => new ForecastClient(new HttpClient(), ApiKey);
+            => new ForecastClient(new HttpClient(), Constants.ApiKey);
         
         [Test]
         public async Task GetForecastWeatherByCityName()

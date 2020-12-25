@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using WeatherForecast.Data.OpenWeather.Clients;
 
 namespace WeatherForecast.Data.OpenWeather.Tests
 {

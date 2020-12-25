@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace WeatherForecast.Data.OpenWeather
+namespace WeatherForecast.Data.OpenWeather.Clients
 {
     public class OpenWeatherUriBuilder : UriBuilder
     {
