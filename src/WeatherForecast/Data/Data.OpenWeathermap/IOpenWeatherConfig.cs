@@ -1,4 +1,4 @@
-﻿namespace WeatherForecast.Data.OpenWeather.Repositories
+﻿namespace WeatherForecast.Data.OpenWeather
 {
     /// <summary>
     /// Configuration for open weather map 

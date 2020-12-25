@@ -6,9 +6,9 @@ using WeatherForecast.Data.OpenWeather.Repositories;
 
 namespace WeatherForecast.Data.OpenWeather
 {
-    public class Database : IDatabase
+    public class OpenWeatherDatabase : IDatabase
     {
-        public Database(HttpClient client, IOpenWeatherConfig config)
+        public OpenWeatherDatabase(HttpClient client, IOpenWeatherConfig config)
         {
             if (config is null)
             {

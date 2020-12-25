@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WeatherForecast.Data.OpenWeather.Repositories
+namespace WeatherForecast.Data.OpenWeather
 {
     public class OpenWeatherConfig : IOpenWeatherConfig
     {

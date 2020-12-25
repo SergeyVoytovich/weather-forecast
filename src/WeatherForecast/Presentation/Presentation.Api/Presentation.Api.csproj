@@ -4,4 +4,14 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="1.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\ApplicationLayer\ApplicationLayer\ApplicationLayer.csproj" />
+      <ProjectReference Include="..\..\Common\Common.Interfaces\Common.Interfaces.csproj" />
+      <ProjectReference Include="..\..\Data\Data.OpenWeathermap\Data.OpenWeathermap.csproj" />
+    </ItemGroup>
+
 </Project>
