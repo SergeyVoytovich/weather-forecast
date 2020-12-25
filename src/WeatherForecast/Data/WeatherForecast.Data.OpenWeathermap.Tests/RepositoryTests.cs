@@ -55,5 +55,29 @@ namespace WeatherForecast.Data.OpenWeather.Tests
                 Assert.IsNotNull(item.WindSpeed);
             }
         }
+        
+        [Test]
+        public async Task LoadForecast()
+        {
+            var repository = InitRepository();
+            var result = await repository.GetWeatherAsync(10117);
+            await repository.LoadForecast(result);
+            
+            Assert.IsNotNull(result);
+            Assert.AreEqual("Berlin", result.Name);
+            Assert.IsNotNull(result.Weather);
+            Assert.IsNotEmpty(result.Weather);
+            Assert.IsTrue(result.Weather.Any(i =>!i.IsCurrent));
+            Assert.Greater(result.Weather.Count, 1);
+            
+            foreach (var item in result.Weather.Where(i => !i.IsCurrent))
+            {
+                Assert.Greater(item.Date, DateTime.MinValue);
+                Assert.Greater(item.Temperature, 0);
+                Assert.Greater(item.Pressure, 0);
+                Assert.Greater(item.Humidity, 0);
+                Assert.IsNotNull(item.WindSpeed);
+            }
+        }
     }
 }

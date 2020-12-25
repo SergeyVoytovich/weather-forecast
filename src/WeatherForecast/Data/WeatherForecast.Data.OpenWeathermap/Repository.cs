@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using WeatherForecast.Common.Data;
 using WeatherForecast.Common.Models;
+using WeatherForecast.Data.OpenWeather.Dto.Forecast;
 using WeatherForecast.Data.OpenWeather.Dto.Weather;
+using City = WeatherForecast.Common.Models.City;
 
 namespace WeatherForecast.Data.OpenWeather
 {
@@ -93,9 +96,44 @@ namespace WeatherForecast.Data.OpenWeather
             return result;
         }
 
-        public Task LoadForecast(ICity city)
+        public async Task LoadForecast(ICity city)
         {
-            throw new NotImplementedException();
+            if (city is null)
+            {
+                throw new ArgumentNullException(nameof(city));
+            }
+
+            ForecastResponse dto;
+            if (city.Id > 0)
+            {
+                dto = await _client.GetForecastWeatherByCityId(city.Id);
+            }
+            else if(!string.IsNullOrWhiteSpace(city.Name))
+            {
+                dto = await _client.GetForecastWeatherByCityName(city.Name);
+            }
+            else
+            {
+                throw new InvalidOperationException("Unable to load forecast for city");
+            }
+
+            if (dto?.Items?.Any() != true)
+            {
+                return;
+            }
+            
+            city.Weather ??= new List<IWeather>();
+            foreach (var item in dto.Items.GroupBy(i => i.Date))
+            {
+                city.Weather.Add(new Weather
+                {
+                    Date = item.Key,
+                    Temperature = item.Average(i => i.Main?.Temperature ?? 0),
+                    Pressure = item.Average(i => i.Main?.Pressure ?? 0),
+                    Humidity = item.Average(i => i.Main?.Humidity ?? 0),
+                    WindSpeed = item.Average(i => i.Wind?.Speed ?? 0),
+                });
+            }
         }
 
         #endregion
