@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Api.Models;
@@ -29,10 +30,10 @@ namespace Presentation.Api.Controllers
                 Weather = city.Weather.OrderBy(i => i.Date).Select(i => new WeatherModel
                 {
                     Date = i.Date,
-                    Humidity = i.Humidity,
-                    Pressure = i.Pressure,
-                    Temperature = i.Temperature,
-                    WindSpeed = i.WindSpeed
+                    Humidity = (int)Math.Round(i.Humidity,0),
+                    Pressure = (int)Math.Round(i.Pressure,0),
+                    Temperature = (int)Math.Round(i.Temperature,0),
+                    WindSpeed = Math.Round(i.WindSpeed,1),
                 }).ToList()
             };
         }
