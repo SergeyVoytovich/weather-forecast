@@ -23,14 +23,24 @@ namespace Presentation.Api
 
             Configuration = builder.Build();
         }
-        
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader();
+                });
+            });
             services.AddControllers();
             services.AddHttpClient();
-            services.AddSingleton<IOpenWeatherConfig>(provider => new OpenWeatherConfig(Configuration.GetSection("OpenWeatherMap")["ApiKey"]));
+            services.AddSingleton<IOpenWeatherConfig>(provider =>
+                new OpenWeatherConfig(Configuration.GetSection("OpenWeatherMap")["ApiKey"]));
             services.AddSingleton<IDatabase, OpenWeatherDatabase>();
             services.AddSingleton<IApplication, Application>();
         }
@@ -44,6 +54,7 @@ namespace Presentation.Api
             }
 
             app.UseRouting();
+            app.UseCors("CorsPolicy");
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
