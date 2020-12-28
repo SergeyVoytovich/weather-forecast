@@ -64,15 +64,15 @@ namespace WeatherForecast.Data.OpenWeather.Repositories
             }
             
             city.Weather ??= new List<IWeather>();
-            foreach (var item in dto.Items.GroupBy(i => i.Date.Date))
+            foreach (var item in dto.Items)
             {
                 city.Weather.Add(new Weather
                 {
-                    Date = item.Key,
-                    Temperature = item.Average(i => i.Main?.Temperature ?? 0),
-                    Pressure = item.Average(i => i.Main?.Pressure ?? 0),
-                    Humidity = item.Average(i => i.Main?.Humidity ?? 0),
-                    WindSpeed = item.Average(i => i.Wind?.Speed ?? 0),
+                    Date = item.Date,
+                    Temperature = item.Main?.Temperature ?? 0,
+                    Pressure = item.Main?.Pressure ?? 0,
+                    Humidity = item.Main?.Humidity ?? 0,
+                    WindSpeed = item.Wind?.Speed ?? 0,
                 });
             }
         }

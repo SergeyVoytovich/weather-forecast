@@ -42,17 +42,17 @@ export default {
 
 #search {
   display: grid;
-  grid-template-columns: 100% 1fr;
+  grid-template-columns: 90% 1fr;
   width: 100%;
 }
 
 #search-box {
   width: 100%;
+  margin-right: 10px;
 }
 
 .search-item {
   display: flex;
-  margin-left: 10px;
 }
 
 </style>

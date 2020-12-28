@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Presentation.Api.Models
 {
     public class WeatherModel
     {
-        [DataMember(Name = "date")]
+        [JsonPropertyName("date")]
         public DateTime Date { get; set; }
         
-        [DataMember(Name = "temp")]
+        [JsonPropertyName("temp")]
         public int Temperature { get; set; }
         
-        [DataMember(Name = "pressure")]
+        [JsonPropertyName("pressure")]
         public int Pressure { get; set; }
         
-        [DataMember(Name = "humidity")]
+        [JsonPropertyName("humidity")]
         public int Humidity { get; set; }
         
-        [DataMember(Name = "speed")]
+        [JsonPropertyName("speed")]
         public decimal WindSpeed { get; set; }
     }
 }

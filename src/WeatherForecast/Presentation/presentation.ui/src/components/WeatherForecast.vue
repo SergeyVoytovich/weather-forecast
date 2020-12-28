@@ -7,7 +7,7 @@
         <span v-bind:hidden="!nothingFound">No items found</span>
       </div>
       <List v-bind:items="items" v-bind:hidden="isItemsHidden" revers="true"/>
-      <list  v-bind:items="defaultItems" v-bind:hidden="isMainHidden" revers="false"/>
+      <List  v-bind:items="defaultItems" v-bind:hidden="isMainHidden" revers="false"/>
     </div>
   </div>
 </template>
@@ -104,7 +104,8 @@ export default {
 }
 
 #content {
-  width: 1024px;
+  max-width: 780px;
+  min-width: 380px;
   margin: 0 auto;
 }
 </style>

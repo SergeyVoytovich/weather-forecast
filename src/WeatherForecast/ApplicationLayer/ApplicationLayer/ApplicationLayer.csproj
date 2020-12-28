@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Common\Common.Interfaces\Common.Interfaces.csproj" />
+      <ProjectReference Include="..\..\Common\Common.Models\Common.Models.csproj" />
     </ItemGroup>
 
 </Project>

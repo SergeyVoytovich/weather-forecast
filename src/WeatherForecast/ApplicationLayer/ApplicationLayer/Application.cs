@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using WeatherForecast.Common.ApplicationLayer;
@@ -31,9 +33,21 @@ namespace WeatherForecast.ApplicationLayer
             };
 
             await _database.Forecast.LoadAsync(city);
-
+            city.Weather = GetAverageWeather(city.Weather);
+            
             return city;
         }
+
+        private IList<IWeather> GetAverageWeather(IList<IWeather> source)
+            => source.GroupBy(i => i.Date.Date)
+                .Select(grp => new Weather
+                {
+                    Date = grp.Key,
+                    Temperature = grp.Average(i => i.Temperature),
+                    Pressure = grp.Average(i => i.Pressure),
+                    Humidity = grp.Average(i => i.Humidity),
+                    WindSpeed = grp.Average(i => i.WindSpeed),
+                }).ToList<IWeather>();
         
         private enum GettingMode
         {
