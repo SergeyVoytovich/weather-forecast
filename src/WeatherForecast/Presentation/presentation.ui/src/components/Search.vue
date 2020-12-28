@@ -1,14 +1,19 @@
 ﻿<template>
-  <div id="search">
-    <form v-on:submit.prevent="noop">
-      <label for="search-box"></label>
-      <input id="search-box"
-             placeholder="Type here city name or yip code to get weather..."
-             type="text"
-             v-model="searchValue"
-      v-on:keyup="onSearchBoxKeyUp"/>
-    </form>
-  </div>
+  <form v-on:submit.prevent="noop">
+    <div id="search">
+      <div class="search-item">
+        <label for="search-box"></label>
+        <input id="search-box"
+               placeholder="Type here name or zip code to search..."
+               type="text"
+               v-model="searchValue"
+               v-on:keyup="onSearchBoxKeyUp"/>
+      </div>
+      <div class="search-item">
+        <button v-on:click="search">Search</button>
+      </div>
+    </div>
+  </form>
 </template>
 
 <script>
@@ -20,22 +25,34 @@ export default {
       "searchValue": '',
     }
   },
-  methods:{
-    onSearchBoxKeyUp: function(e){
-      if(e.keyCode === 13)
-      {
-        this.onSearch(this.searchValue);
+  methods: {
+    onSearchBoxKeyUp: function (e) {
+      if (e.keyCode === 13) {
+        this.search();
       }
     },
-    onSearch: function (q){
-      this.$emit('my-event', q);
+    search: function () {
+      this.$emit('my-event', this.searchValue);
     }
   },
 }
 </script>
 
 <style scoped>
+
+#search {
+  display: grid;
+  grid-template-columns: 100% 1fr;
+  width: 100%;
+}
+
 #search-box {
   width: 100%;
 }
+
+.search-item {
+  display: flex;
+  margin-left: 10px;
+}
+
 </style>
