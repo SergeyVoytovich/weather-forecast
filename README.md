@@ -25,3 +25,14 @@ Test solution for demonstrate skills
 >   - It is sufficient if you save the name of the city, the temperature and humidity. 
 >   - That should then appear in a separate "history" list in the UI.
 > - Visual quality: here, too, your own skills should be fully realized in terms of CSS, a visually appealing presentation (using just a CSS framework is fine) is a plus.
+##Implementation
+###Tools
+> - JetBrains Rider 2020.3 
+> - Node.js v14.15.1. 
+> - .Net Core SDK 5.0.101
+> - Vue.js 3.0.0
+###Architecture
+> - Common - common interfaces and implementations (like domain models).
+> - Application layer - abstract layer for business logic. 
+> - Data - abstract layer for data access. For solution OpenWeatherMap service is a data source (work as IRepository). 
+> - Presentation - layer for user interface (includes ASP.Net Web API project to build JSON data and Vue project to build UI).

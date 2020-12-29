@@ -45,7 +45,7 @@ namespace WeatherForecast.Data.OpenWeather.Tests.Repositories
             Assert.AreEqual(2950159, result.Id);
             Assert.IsNotNull(result.Weather);
             Assert.IsNotEmpty(result.Weather);
-            Assert.IsTrue(result.Weather.Any(i => i.IsCurrent));
+            Assert.IsTrue(result.Weather.Any(i => i.Date.Date == DateTime.Now.Date));
             
             foreach (var item in result.Weather)
             {
@@ -87,7 +87,7 @@ namespace WeatherForecast.Data.OpenWeather.Tests.Repositories
             Assert.AreEqual(2950159, result.Id);
             Assert.IsNotNull(result.Weather);
             Assert.IsNotEmpty(result.Weather);
-            Assert.IsTrue(result.Weather.Any(i => i.IsCurrent));
+            Assert.IsTrue(result.Weather.Any(i => i.Date.Date == DateTime.Now.Date));
             
             foreach (var item in result.Weather)
             {

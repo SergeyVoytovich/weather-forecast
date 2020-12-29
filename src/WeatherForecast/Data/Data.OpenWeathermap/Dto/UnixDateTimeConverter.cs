@@ -3,6 +3,10 @@ using Newtonsoft.Json;
 
 namespace WeatherForecast.Data.OpenWeather.Dto
 {
+    /// <summary>
+    /// Date time converter
+    /// </summary>
+    /// <remarks>Converted UNIX date to DateTime object</remarks>
     public class UnixDateTimeConverter : JsonConverter
     {
         private static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);

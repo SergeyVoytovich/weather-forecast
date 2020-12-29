@@ -22,10 +22,9 @@ namespace WeatherForecast.Data.OpenWeather.Tests.Repositories
                 Assert.IsNotNull(actual);
                 Assert.IsNotNull(actual.Weather);
                 Assert.IsNotEmpty(actual.Weather);
-                Assert.IsTrue(actual.Weather.Any(i =>!i.IsCurrent));
                 Assert.Greater(actual.Weather.Count, 1);
             
-                foreach (var item in actual.Weather.Where(i => !i.IsCurrent))
+                foreach (var item in actual.Weather)
                 {
                     Assert.Greater(item.Date, DateTime.MinValue);
                     Assert.Greater(item.Temperature, 0);

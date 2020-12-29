@@ -37,7 +37,12 @@ namespace WeatherForecast.Data.OpenWeather.Repositories
 
         #region Methods
 
-        private ICity ConvertWeatherResponse(WeatherResponse dto)
+        /// <summary>
+        /// Convert response to city
+        /// </summary>
+        /// <param name="dto">City DTO</param>
+        /// <returns>City</returns>
+        private ICity ConvertToCity(WeatherResponse dto)
         {
             if (dto is null)
             {
@@ -63,17 +68,27 @@ namespace WeatherForecast.Data.OpenWeather.Repositories
             return result;
         }
         
+        /// <summary>
+        /// Get city by name
+        /// </summary>
+        /// <param name="name">City name</param>
+        /// <returns>City</returns>
         public async Task<ICity> GetAsync(string name)
         {
             var dto = await _client.GetByCityNameAsync(name);
-            var result = ConvertWeatherResponse(dto);
+            var result = ConvertToCity(dto);
             return result;
         }
 
+        /// <summary>
+        /// Get city by zip code
+        /// </summary>
+        /// <param name="zipCode">Zip code</param>
+        /// <returns>City</returns>
         public async Task<ICity> GetAsync(int zipCode)
         {
             var dto = await _client.GetByZipCodeAsync(zipCode);
-            var result = ConvertWeatherResponse(dto);
+            var result = ConvertToCity(dto);
             return result;
         }
 

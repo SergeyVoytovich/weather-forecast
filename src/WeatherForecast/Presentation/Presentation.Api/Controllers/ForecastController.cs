@@ -7,14 +7,33 @@ using WeatherForecast.Common.ApplicationLayer;
 
 namespace Presentation.Api.Controllers
 {
+    /// <summary>
+    /// Forecast controller
+    /// </summary>
     [ApiController]
     [Route("api/weather/[controller]")]
     public class ForecastController : ApiControllerBase
     {
+        #region Constructors
+
+        /// <summary>
+        /// Init new instance
+        /// </summary>
+        /// <param name="application"></param>
         public ForecastController(IApplication application) : base(application)
         {
         }
 
+        #endregion
+
+        
+        #region Methods
+
+        /// <summary>
+        /// Get forecast for query
+        /// </summary>
+        /// <param name="q"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<CityModel>> Get(string q)
         {
@@ -24,6 +43,11 @@ namespace Presentation.Api.Controllers
             }
 
             var city = await Application.GetAsync(q);
+            if (city is null)
+            {
+                return NotFound();
+            }
+            
             return new CityModel
             {
                 Name = city.Name,
@@ -37,5 +61,7 @@ namespace Presentation.Api.Controllers
                 }).ToList()
             };
         }
+
+        #endregion
     }
 }

@@ -3,6 +3,9 @@ using WeatherForecast.Common.Models;
 
 namespace WeatherForecast.Common.Data
 {
+    /// <summary>
+    /// Interfaces for forecast repository
+    /// </summary>
     public interface IForecastRepository
     {
         /// <summary>

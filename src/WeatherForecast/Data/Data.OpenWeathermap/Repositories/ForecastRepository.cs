@@ -37,6 +37,13 @@ namespace WeatherForecast.Data.OpenWeather.Repositories
 
         #region Methods
 
+        /// <summary>
+        /// Load forecast
+        /// </summary>
+        /// <param name="city">City</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">Throw if city is null</exception>
+        /// <exception cref="InvalidOperationException">Throw if no key to load forecast (city name is null or empty or id is invalid)</exception>
         public async Task LoadAsync(ICity city)
         {
             if (city is null)

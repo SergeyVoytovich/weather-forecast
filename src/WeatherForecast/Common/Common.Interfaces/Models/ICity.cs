@@ -16,10 +16,6 @@ namespace WeatherForecast.Common.Models
         /// </summary>
         string Name { get; set; }
         /// <summary>
-        /// City zip code
-        /// </summary>
-        int ZipCode { get; set; }
-        /// <summary>
         /// Weather list
         /// </summary>
         IList<IWeather> Weather { get; set; }

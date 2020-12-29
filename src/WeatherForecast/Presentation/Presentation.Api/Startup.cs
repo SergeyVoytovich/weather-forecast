@@ -13,9 +13,14 @@ namespace Presentation.Api
 {
     public class Startup
     {
+        /// <summary>
+        /// Configuration
+        /// </summary>
         public IConfigurationRoot Configuration { get; set; }
 
-        public Startup(IHostingEnvironment env)
+        private const string PolicyName = "CorsPolicy";
+
+        public Startup(IWebHostEnvironment env)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
@@ -28,16 +33,20 @@ namespace Presentation.Api
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add cors policies
             services.AddCors(options =>
             {
-                options.AddPolicy("CorsPolicy", builder =>
+                options.AddPolicy(PolicyName, builder =>
                 {
                     builder.AllowAnyOrigin()
                             .AllowAnyMethod()
                             .AllowAnyHeader();
                 });
             });
+            
             services.AddControllers();
+            
+            // Add addition services
             services.AddHttpClient();
             services.AddSingleton<IOpenWeatherConfig>(provider =>
                 new OpenWeatherConfig(Configuration.GetSection("OpenWeatherMap")["ApiKey"]));
@@ -54,7 +63,7 @@ namespace Presentation.Api
             }
 
             app.UseRouting();
-            app.UseCors("CorsPolicy");
+            app.UseCors(PolicyName);
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }

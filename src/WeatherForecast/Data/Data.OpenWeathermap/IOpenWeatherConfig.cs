@@ -5,6 +5,9 @@
     /// </summary>
     public interface IOpenWeatherConfig
     {
+        /// <summary>
+        /// Api key
+        /// </summary>
         string ApiKey { get; }
     }
 }

@@ -1,5 +1,8 @@
 ﻿namespace WeatherForecast.Data.OpenWeather
 {
+    /// <summary>
+    /// Internal contants
+    /// </summary>
     internal static class Constants
     {
         public const string Host  = "api.openweathermap.org";
