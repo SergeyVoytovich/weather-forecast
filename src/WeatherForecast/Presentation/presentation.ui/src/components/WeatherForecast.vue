@@ -21,6 +21,7 @@ import List from '@/components/List';
 
 const historyTab = 'history';
 const mainTab = 'main';
+const historyKey = 'historyItems';
 
 export default {
   name: 'WeatherForecast',
@@ -73,8 +74,14 @@ export default {
             }
 
             self.history.splice(0, 0, data);
-            console.log(this.main[0]);
             self.showTab(historyTab);
+            
+            try {
+              localStorage.setItem(historyKey, JSON.stringify(this.history));
+            }
+            catch (e) {
+              console.log(e);
+            }
           })
           .catch(() => {
             self.nothingFoundHidden = false;
@@ -89,18 +96,28 @@ export default {
         const response = await fetch(this.getUri(value));
         const json = await response.json();
         self.main.push(json);
-      }      
+      }
+    },
+    loadHistory: function () {
+      const history = localStorage.getItem(historyKey);
+      console.log(history);
+      if (history !== null && history !== undefined) {
+        try {
+          this.history = JSON.parse(history);
+        }
+        catch (e) {
+          console.log(e);
+        }
+      }
     },
     showTab: function (tab) {
       this.isHistoryHidden = true;
       this.isMainHidden = true;
       switch (tab) {
         case  historyTab:
-          console.log(historyTab);
           this.isHistoryHidden = false;
           break;
         case mainTab:
-          console.log(mainTab);
           this.isMainHidden = false;
           break;
       }
@@ -108,7 +125,9 @@ export default {
   },
   beforeMount() {
     this.loadMain();
-    this.showTab(this.history.length > 0 ? historyTab : mainTab);
+    this.loadHistory();
+
+    this.showTab(this.history?.length > 0 ? historyTab : mainTab);
   },
   computed: {}
 };
@@ -125,13 +144,13 @@ export default {
   margin: 0 auto;
 }
 
-.tabs{
+.tabs {
   text-align: left;
   padding-top: 6px;
   padding-bottom: 12px;
 }
 
-.tabs button{
+.tabs button {
   background-color: #000000;
   float: left;
   border: none;
@@ -144,11 +163,11 @@ export default {
   opacity: .25;
 }
 
-.tabs button:hover{
+.tabs button:hover {
   opacity: .5;
 }
 
-.tabs button.active{
+.tabs button.active {
   opacity: 1;
 }
 </style>
