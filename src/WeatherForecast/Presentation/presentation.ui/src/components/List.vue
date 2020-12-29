@@ -14,7 +14,6 @@ export default {
   components: {Item},
   props: {
     items: [],
-    revers: Boolean,
   }
 }
 </script>
